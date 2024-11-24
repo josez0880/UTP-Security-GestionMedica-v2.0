@@ -1,0 +1,63 @@
+:root {
+    /* Colores principales */
+
+
+    --color-primary: #06283D;
+    --color-secondary: #256D85;
+    --color-success: #28a745;
+    --color-danger: #dc3545;
+    --color-warning: #ffc107;
+    --color-info: #17a2b8;
+    --color-light: #f8f9fa;
+    --color-dark: #343a40;
+
+    /* Colores de fondo */
+    --bg-color: #ffffff;
+    --bg-color-alt: #903535;
+
+    /* Colores de texto */
+    --text-color: #333333;
+    --text-color-light: #666666;
+
+    /* Fuentes */
+    --font-primary: 'Hind Madurai', sans-serif;
+    --font-secondary: 'Montserrat', sans-serif;
+
+    /* Tamaños de fuente */
+    --font-size-small: 0.875rem;
+    --font-size-normal: 1rem;
+    --font-size-large: 1.25rem;
+    --font-size-xlarge: 1.5rem;
+
+    /* Espaciado */
+    --spacing-small: 0.5rem;
+    --spacing-medium: 1rem;
+    --spacing-large: 1.5rem;
+
+    /* Bordes */
+    --border-radius: 4px;
+    --border-color: #e0e0e0;
+}
+
+/* Estilos globales */
+body {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-normal);
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-secondary);
+    color: var(--color-primary);
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
