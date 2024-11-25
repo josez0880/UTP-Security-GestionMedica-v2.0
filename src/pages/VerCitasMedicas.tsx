@@ -38,14 +38,13 @@
 import { useState, useEffect } from 'react';
 import { 
   Container, Typography, Grid, Card, CardContent, TextField, 
-  Button, CircularProgress, Alert, Chip, Box, Dialog, DialogTitle, DialogContent, DialogActions, Snackbar
+  Button, CircularProgress, Alert, Chip, Box, Dialog, DialogTitle, DialogContent, DialogActions, Snackbar, AlertColor
 } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { es } from 'date-fns/locale';
 import { differenceInHours } from 'date-fns';
-import { AlertColor } from '@mui/material';
 
 // Datos de prueba que simulan citas médicas
 // En producción estos datos vendrían de una API
@@ -113,7 +112,8 @@ export default function VerCitasMedicas() {
       try {
         setLoading(true)
         const citas = await fetchCitas();
-        setCitas(citas);
+        // setCitas(citas);  
+        setCitas(mockCitas);
       } catch (error) {
         console.error("Error al cargar las citas:", error);
       } finally {
