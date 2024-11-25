@@ -49,11 +49,11 @@ import { AlertColor } from '@mui/material';
 
 // Datos de prueba que simulan citas médicas
 // En producción estos datos vendrían de una API
-const mockCitas = [
-  { id: 1, fecha: new Date('2024-11-5'), especialidad: 'Cardiología', medico: 'Dr. Juan Pérez', estado: 'activa' },
-  { id: 2, fecha: new Date('2024-03-05'), especialidad: 'Dermatología', medico: 'Dra. Ana García', estado: 'completada' },
-  { id: 3, fecha: new Date('2024-03-10'), especialidad: 'Pediatría', medico: 'Dr. Carlos Rodríguez', estado: 'cancelada' },
-];
+// const mockCitas = [
+//   { id: 1, fecha: new Date('2024-11-5'), especialidad: 'Cardiología', medico: 'Dr. Juan Pérez', estado: 'activa' },
+//   { id: 2, fecha: new Date('2024-03-05'), especialidad: 'Dermatología', medico: 'Dra. Ana García', estado: 'completada' },
+//   { id: 3, fecha: new Date('2024-03-10'), especialidad: 'Pediatría', medico: 'Dr. Carlos Rodríguez', estado: 'cancelada' },
+// ];
 
 // Interfaz que define la estructura de datos de una cita médica
 interface Cita {
