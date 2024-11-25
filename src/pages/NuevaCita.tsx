@@ -107,10 +107,9 @@ export default function NuevaCita() {
     }
 
     setLoading(true);
-    try {
-      // Simular una llamada a la API para buscar disponibilidad
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
+    // Simular una llamada a la API para buscar disponibilidad
+    setTimeout(() => {
+      // Simulación de respuesta exitosa
       setCitaConfirmada({
         fecha: fecha,
         hora: '10:00',
@@ -118,32 +117,27 @@ export default function NuevaCita() {
         medico: 'Dr. García',
       });
       setActiveStep(1);
-    } catch (error) {
-      setSnackbar({ open: true, message: 'Error al buscar disponibilidad', severity: 'error' });
-    } finally {
       setLoading(false);
-    }
+    }, 1500);
   };
 
   /**
    * Confirma la cita médica y envía la información al backend
    * Simula una llamada a API con un timeout
    */
-  async function handleStorage(Especialidad: string) {
-    setLoading(true);
-    try {
-      const url = "https://ybbqbktuel.execute-api.us-east-1.amazonaws.com/dev";
-      const headers = { 
-        "Content-Type": "application/json",
-      };
-      const body = JSON.stringify({ Especialidad: Especialidad });
+  async function handleStorage(Especialidad : string) {
+    const url = "https://ybbqbktuel.execute-api.us-east-1.amazonaws.com/dev"
+    const headers = { 
+      "Content-Type": "application/json",
+    }
+    const body = JSON.stringify({ Especialidad: Especialidad })
 
-      const requestOptions: RequestInit = {
-        method: "POST",
-        headers,
-        body,
-        redirect: "follow"
-      };
+    const requestOptions: RequestInit = {
+      method: "POST",
+      headers,
+      body,
+      redirect: "follow"
+    }
 
   try {
     const response = await fetch(url, requestOptions);
@@ -152,11 +146,6 @@ export default function NuevaCita() {
     const parsedBody = JSON.parse(result.body)
     console.log(parsedBody)
     alert(`Datos del paciente ${parsedBody.item.PK} enviados`)
-  }catch (error) {
-    console.log(error)
-  }
-  }
-
   //   const handleConfirmarCita = async () => {
   //   setLoading(true);
 
@@ -168,7 +157,10 @@ export default function NuevaCita() {
       navigate('/ver-citas');
     }, 1500);
   // };
-
+  }catch (error) {
+    console.log(error)
+  }
+  }
   /**
    * Maneja la navegación hacia atrás en el flujo de creación de cita
    * Si está en el primer paso, vuelve al Home
