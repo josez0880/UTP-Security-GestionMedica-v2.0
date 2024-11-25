@@ -14,6 +14,7 @@ function App() {
             <Routes>
                 <Route element={<Layout />}>
                     <Route path="/" element={<LoginPage />} />
+                    <Route path="/register" element={<RegisterPage />} />
                     {role === "user" && <Route path="/home" element={<Home />} />}
                     {role === "user" && <Route path="/nueva-cita" element={<NuevaCita />} />}
                     {role === "user" && <Route path="/ver-citas" element={<VerCitasMedicas />} />}

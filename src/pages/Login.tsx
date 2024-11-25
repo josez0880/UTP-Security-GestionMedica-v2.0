@@ -22,6 +22,9 @@ const LoginPage: React.FC = () => {
       alert("Error al iniciar sesión." + err);
     }2
   };
+const handleRegister = () =>{
+    navigate("/register");
+}
 
   return (
     <div>
@@ -36,6 +39,9 @@ const LoginPage: React.FC = () => {
       />
       <Button variant="contained" color="primary" onClick={handleLogin}>
         Ingresar
+      </Button>
+      <Button variant="contained" color="primary" onClick={handleRegister}>
+        Registrarse
       </Button>
     </div>
   );
