@@ -146,6 +146,7 @@ export default function NuevaCita() {
     const parsedBody = JSON.parse(result.body)
     console.log(parsedBody)
     alert(`Datos del paciente ${parsedBody.item.PK} enviados`)
+    navigate('/ver-citas');
   }catch (error) {
     console.log(error)
   }
@@ -155,12 +156,12 @@ export default function NuevaCita() {
   //   setLoading(true);
 
     // Simular una llamada a la API para confirmar la cita
-    setTimeout(() => {
-      setSnackbar({ open: true, message: 'Cita creada exitosamente. Se ha enviado un correo con los detalles.', severity: 'success' });
-      setLoading(false);
-      // Redirigir al usuario a la página de ver citas
-      navigate('/ver-citas');
-    }, 1500);
+    // setTimeout(() => {
+    //   setSnackbar({ open: true, message: 'Cita creada exitosamente. Se ha enviado un correo con los detalles.', severity: 'success' });
+    //   setLoading(false);
+    //   // Redirigir al usuario a la página de ver citas
+    //   navigate('/ver-citas');
+    // }, 1500);
   // };
 
   /**
