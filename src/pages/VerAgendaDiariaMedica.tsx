@@ -116,11 +116,11 @@ const StatusChip = styled(Chip)<StatusChipProps>(({ theme, status }) => ({
 
 // Mock data (replace with actual data fetching logic)
 const mockAppointments: Appointment[] = [
-  { id: 1, time: '09:00', patientName: 'Juan Pérez', specialty: 'Cardiología', status: 'PROGRAMADA', date: new Date(2023, 5, 15, 9, 0) },
-  { id: 2, time: '10:00', patientName: 'María García', specialty: 'Dermatología', status: 'COMPLETADA', date: new Date(2023, 5, 15, 10, 0), diagnostico: 'Dermatitis atópica', recomendaciones: 'Aplicar crema hidratante dos veces al día' },
-  { id: 3, time: '11:00', patientName: 'Carlos Rodríguez', specialty: 'Oftalmología', status: 'CANCELADA', date: new Date(2023, 5, 15, 11, 0) },
-  { id: 4, time: '12:00', patientName: 'Ana Martínez', specialty: 'Pediatría', status: 'PROGRAMADA', date: new Date(2023, 5, 15, 12, 0) },
-  { id: 5, time: '13:00', patientName: 'Luis Sánchez', specialty: 'Traumatología', status: 'COMPLETADA', date: new Date(2023, 5, 15, 13, 0), diagnostico: 'Esguince de tobillo', recomendaciones: 'Reposo y aplicar hielo durante 20 minutos cada 2-3 horas' },
+  { id: 1, time: '09:00', patientName: 'Ernesto Crespo', specialty: 'Cardiología', status: 'PROGRAMADA', date: new Date(2023, 5, 15, 9, 0) },
+  { id: 2, time: '10:00', patientName: 'Carla García', specialty: 'Dermatología', status: 'COMPLETADA', date: new Date(2023, 5, 15, 10, 0), diagnostico: 'Dermatitis atópica', recomendaciones: 'Aplicar crema hidratante dos veces al día' },
+  { id: 3, time: '11:00', patientName: 'Jose Rodríguez', specialty: 'Oftalmología', status: 'CANCELADA', date: new Date(2023, 5, 15, 11, 0) },
+  { id: 4, time: '12:00', patientName: 'Toni Solis', specialty: 'Pediatría', status: 'PROGRAMADA', date: new Date(2023, 5, 15, 12, 0) },
+  { id: 5, time: '13:00', patientName: 'Martin Alonso', specialty: 'Traumatología', status: 'COMPLETADA', date: new Date(2023, 5, 15, 13, 0), diagnostico: 'Esguince de tobillo', recomendaciones: 'Reposo y aplicar hielo durante 20 minutos cada 2-3 horas' },
 ];
 
 interface Appointment {
