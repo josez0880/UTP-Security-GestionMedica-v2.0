@@ -85,14 +85,52 @@ export default function VerCitasMedicas() {
     severity: 'info' 
   });
 
-  // Efecto para cargar los datos iniciales
+  async function fetchCitas() {
+    const url = "https://ybbqbktuel.execute-api.us-east-1.amazonaws.com/dev";
+
+    try {
+      const response = await fetch(url, { method: "GET" });
+      if (!response.ok) {
+        throw new Error(`Error al obtener datos: ${response.statusText}`);
+      }
+      const result = await response.json();
+      
+      // Asegúrate de que `result.body` contiene un array de citas
+      // const parsedBody = JSON.parse(result.body);
+      const parsedBody = result.item ? [result.item] : []
+      console.log(parsedBody); // Para depuración
+  
+      // Retorna el listado de citas
+      return parsedBody || []; // Asegúrate de que la propiedad es `items`
+    } catch (error) {
+      console.error("Error al cargar las citas:", error);
+      throw error;
+    }
+  }
+
   useEffect(() => {
-    // Simulación de llamada a API
-    setTimeout(() => {
-      setCitas(mockCitas);
-      setLoading(false);
-    }, 1000);
-  }, []);
+    const cargarCitas = async () => {
+      try {
+        setLoading(true)
+        const citas = await fetchCitas();
+        setCitas(citas);
+      } catch (error) {
+        console.error("Error al cargar las citas:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    cargarCitas();
+  }, [])
+
+  // Efecto para cargar los datos iniciales
+  // useEffect(() => {
+  //   // Simulación de llamada a API
+  //   setTimeout(() => {
+  //     setCitas(mockCitas);
+  //     setLoading(false);
+  //   }, 1000);
+  // }, []);
 
   // Función para filtrar las citas según los criterios seleccionados
   const citasFiltradas = citas.filter(cita => 
