@@ -107,9 +107,10 @@ export default function NuevaCita() {
     }
 
     setLoading(true);
-    // Simular una llamada a la API para buscar disponibilidad
-    setTimeout(() => {
-      // Simulación de respuesta exitosa
+    try {
+      // Simular una llamada a la API para buscar disponibilidad
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
       setCitaConfirmada({
         fecha: fecha,
         hora: '10:00',
@@ -117,51 +118,49 @@ export default function NuevaCita() {
         medico: 'Dr. García',
       });
       setActiveStep(1);
+    } catch (error) {
+      setSnackbar({ open: true, message: 'Error al buscar disponibilidad', severity: 'error' });
+    } finally {
       setLoading(false);
-    }, 1500);
+    }
   };
 
   /**
    * Confirma la cita médica y envía la información al backend
    * Simula una llamada a API con un timeout
    */
-  async function handleStorage(Especialidad : string) {
-    const url = "https://ybbqbktuel.execute-api.us-east-1.amazonaws.com/dev"
-    const headers = { 
-      "Content-Type": "application/json",
-    }
-    const body = JSON.stringify({ Especialidad: Especialidad })
+  async function handleStorage(Especialidad: string) {
+    setLoading(true);
+    try {
+      const url = "https://ybbqbktuel.execute-api.us-east-1.amazonaws.com/dev";
+      const headers = { 
+        "Content-Type": "application/json",
+      };
+      const body = JSON.stringify({ Especialidad: Especialidad });
 
-    const requestOptions: RequestInit = {
-      method: "POST",
-      headers,
-      body,
-      redirect: "follow"
-    }
+      const requestOptions: RequestInit = {
+        method: "POST",
+        headers,
+        body,
+        redirect: "follow"
+      };
 
-  try {
-    const response = await fetch(url, requestOptions);
-
-    const result = await response.json();
-    const parsedBody = JSON.parse(result.body)
-    console.log(parsedBody)
-    alert(`Datos del paciente ${parsedBody.item.PK} enviados`)
-  }catch (error) {
-    console.log(error)
-  }
-  }
-
-  //   const handleConfirmarCita = async () => {
-  //   setLoading(true);
-
-    // Simular una llamada a la API para confirmar la cita
-    setTimeout(() => {
-      setSnackbar({ open: true, message: 'Cita creada exitosamente. Se ha enviado un correo con los detalles.', severity: 'success' });
+      const response = await fetch(url, requestOptions);
+      const result = await response.json();
+      const parsedBody = JSON.parse(result.body);
+      
+      setSnackbar({ open: true, message: 'Cita creada exitosamente', severity: 'success' });
+      setTimeout(() => {
+        navigate('/ver-citas');
+      }, 2000);
+      
+    } catch (error) {
+      console.error(error);
+      setSnackbar({ open: true, message: 'Error al crear la cita', severity: 'error' });
+    } finally {
       setLoading(false);
-      // Redirigir al usuario a la página de ver citas
-      navigate('/ver-citas');
-    }, 1500);
-  // };
+    }
+  }
 
   /**
    * Maneja la navegación hacia atrás en el flujo de creación de cita
