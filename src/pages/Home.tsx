@@ -34,14 +34,34 @@ import {
   Paper
 } from '@mui/material';
 import { Add as AddIcon, CalendarMonth as CalendarIcon } from '@mui/icons-material';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 export default function Home() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Limpiar localStorage
+    localStorage.clear();
+    // Redirigir al login
+    navigate('/');
+  };
+
   return (
     <Container maxWidth="sm" sx={{ mt: 4 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2 }}>
+        <Button
+          variant="outlined"
+          color="error"
+          startIcon={<LogoutIcon />}
+          onClick={handleLogout}
+        >
+          Cerrar Sesión
+        </Button>
+      </Box>
       <Paper elevation={3} sx={{ p: 4, textAlign: 'center' }}>
         <Typography variant="h4" component="h1" gutterBottom>
-            Sistema de Gestión de Citas Médicas de userName
+            Sistema de Gestión de Citas Médicas
         </Typography>
         <Grid container spacing={4} sx={{ mt: 2 }}>
           <Grid item xs={12} sm={6}>

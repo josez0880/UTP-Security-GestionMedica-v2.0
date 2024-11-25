@@ -48,13 +48,16 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  IconButton
+  IconButton,
+  Button
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import LogoutIcon from '@mui/icons-material/Logout';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import DetalleCitaDiagnostico from '../components/DetalleCitaDiagnostico.tsx';
+import { useNavigate } from 'react-router-dom';
 
 /**
  * Tema personalizado para la aplicación
@@ -143,6 +146,7 @@ export default function VerAgendaDiariaMedica() {
   const [counts, setCounts] = useState({ PROGRAMADA: 0, COMPLETADA: 0, CANCELADA: 0 });
   const [selectedAppointment, setSelectedAppointment] = useState<Appointment | null>(null);
   const [detailDialogOpen, setDetailDialogOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Simulating data fetching
@@ -248,12 +252,29 @@ export default function VerAgendaDiariaMedica() {
     )
     );
 
+  const handleLogout = () => {
+    // Limpiar localStorage
+    localStorage.clear();
+    // Redirigir al login
+    navigate('/');
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <Container maxWidth="md" sx={{ py: 4 }}>
-        <Typography variant="h4" component="h1" gutterBottom>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
+          <Typography variant="h4" component="h1">
             Agenda Médica
           </Typography>
+          <Button
+            variant="outlined"
+            color="error"
+            startIcon={<LogoutIcon />}
+            onClick={handleLogout}
+          >
+            Cerrar Sesión
+          </Button>
+        </Box>
         <Typography variant="h6" gutterBottom>
           {format(new Date(), "EEEE, d 'de' MMMM 'de' yyyy", { locale: es })}
         </Typography>
