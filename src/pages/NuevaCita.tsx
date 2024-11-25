@@ -61,6 +61,7 @@ import { ArrowBack as ArrowBackIcon } from '@mui/icons-material';
 import { addDays, isBefore, isAfter } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
 
+
 // Lista de especialidades médicas disponibles
 const especialidades = [
   { value: 'general', label: 'Medicina General' },
@@ -168,8 +169,7 @@ export default function NuevaCita() {
    */
   const handleVolver = () => {
     if (activeStep === 0) {
-      // Aquí se podría implementar la navegación de vuelta al Home
-      console.log('Volver al Home');
+      navigate('/home');
     } else {
       setActiveStep(0);
     }
