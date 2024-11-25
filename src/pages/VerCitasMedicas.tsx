@@ -38,22 +38,21 @@
 import { useState, useEffect } from 'react';
 import { 
   Container, Typography, Grid, Card, CardContent, TextField, 
-  Button, CircularProgress, Alert, Chip, Box, Dialog, DialogTitle, DialogContent, DialogActions, Snackbar
+  Button, CircularProgress, Alert, Chip, Box, Dialog, DialogTitle, DialogContent, DialogActions, Snackbar, AlertColor
 } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { es } from 'date-fns/locale';
 import { differenceInHours } from 'date-fns';
-import { AlertColor } from '@mui/material';
 
 // Datos de prueba que simulan citas médicas
 // En producción estos datos vendrían de una API
-// const mockCitas = [
-//   { id: 1, fecha: new Date('2024-11-5'), especialidad: 'Cardiología', medico: 'Dr. Juan Pérez', estado: 'activa' },
-//   { id: 2, fecha: new Date('2024-03-05'), especialidad: 'Dermatología', medico: 'Dra. Ana García', estado: 'completada' },
-//   { id: 3, fecha: new Date('2024-03-10'), especialidad: 'Pediatría', medico: 'Dr. Carlos Rodríguez', estado: 'cancelada' },
-// ];
+const mockCitas = [
+   { id: 1, fecha: new Date('2024-12-10'), especialidad: 'Cardiología', medico: 'Dr. Juan Pérez', estado: 'activa' },
+   { id: 2, fecha: new Date('2024-03-05'), especialidad: 'Dermatología', medico: 'Dra. Ana García', estado: 'completada' },
+   { id: 3, fecha: new Date('2024-03-10'), especialidad: 'Pediatría', medico: 'Dr. Carlos Rodríguez', estado: 'cancelada' },
+];
 
 // Interfaz que define la estructura de datos de una cita médica
 interface Cita {
@@ -113,7 +112,8 @@ export default function VerCitasMedicas() {
       try {
         setLoading(true)
         const citas = await fetchCitas();
-        setCitas(citas);
+        // setCitas(citas);  
+        setCitas(mockCitas);
       } catch (error) {
         console.error("Error al cargar las citas:", error);
       } finally {
